@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar Customization - EduHacks</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Avatar</h1>
+
+        <div class="gender-selection">
+            <h2>Select Gender:</h2>
+            <button id="maleButton">Male</button>
+            <button id="femaleButton">Female</button>
+        </div>
+
+        <div class="avatar-display">
+            <!-- Layered avatar -->
+            <div class="avatar-container">
+                <img id="baseAvatar" class="avatar-layer" src="images/maleavatar.png" alt="Base Avatar" />
+                <img id="dressLayer" class="avatar-layer" src="" alt="Dress" />
+                <img id="shoesLayer" class="avatar-layer" src="" alt="Shoes" />
+                <img id="hairLayer" class="avatar-layer" src="" alt="Hair" />
+            </div>
+        </div>
+
+        <div class="options">
+            <h2>Customize Your Avatar</h2>
+
+            <div class="dress-options">
+                <h3>Dresses</h3>
+                <div>
+                    <img class="dress" src="images/dress1.png" alt="Dress 1" />
+                    <img class="dress locked" src="images/dress2.png" alt="Dress 2" />
+                    <img class="dress locked" src="images/dress3.png" alt="Dress 3" />
+                </div>
+            </div>
+
+            <div class="shoe-options">
+                <h3>Shoes</h3>
+                <div>
+                    <img class="shoe" src="images/shoe1.png" alt="Shoe 1" />
+                    <img class="shoe locked" src="images/shoe2.png" alt="Shoe 2" />
+                    <img class="shoe locked" src="images/shoe3.png" alt="Shoe 3" />
+                </div>
+            </div>
+
+            <div class="hair-options">
+                <h3>Hairstyles</h3>
+                <div>
+                    <img class="hair" src="images/hair1.png" alt="Hair 1" />
+                    <img class="hair locked" src="images/hair2.png" alt="Hair 2" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Avatar Display -->
+        <div class="final-avatar-display">
+            <h2>Your Final Avatar</h2>
+            <img id="finalAvatar" src="" alt="Final Avatar" />
+        </div>
+    </div>
+
+    <script>
+        // Elements
+        const baseAvatar = document.getElementById('baseAvatar');
+        const dressLayer = document.getElementById('dressLayer');
+        const shoesLayer = document.getElementById('shoesLayer');
+        const hairLayer = document.getElementById('hairLayer');
+        const finalAvatar = document.getElementById('finalAvatar');
+
+        const maleButton = document.getElementById('maleButton');
+        const femaleButton = document.getElementById('femaleButton');
+
+        // Gender switch logic
+        maleButton.addEventListener('click', function() {
+            baseAvatar.src = 'images/maleavatar.png';
+            updateFinalAvatar();
+        });
+
+        femaleButton.addEventListener('click', function() {
+            baseAvatar.src = 'images/femaleavatar.png';
+            updateFinalAvatar();
+        });
+
+        // Update dress, shoes, and hair layers on click
+        document.querySelectorAll('.dress').forEach(item => {
+            item.addEventListener('click', function() {
+                dressLayer.src = this.src;
+                updateFinalAvatar();
+            });
+        });
+
+        document.querySelectorAll('.shoe').forEach(item => {
+            item.addEventListener('click', function() {
+                shoesLayer.src = this.src;
+                updateFinalAvatar();
+            });
+        });
+
+        document.querySelectorAll('.hair').forEach(item => {
+            item.addEventListener('click', function() {
+                hairLayer.src = this.src;
+                updateFinalAvatar();
+            });
+        });
+
+        // Function to update final avatar
+        function updateFinalAvatar() {
+            const finalAvatarSrc = baseAvatar.src.split('/').pop(); // Base avatar name
+            const dressSrc = dressLayer.src.split('/').pop(); // Dress name
+            const shoesSrc = shoesLayer.src.split('/').pop(); // Shoes name
+            const hairSrc = hairLayer.src.split('/').pop(); // Hair name
+            
+            // Combine images to display final avatar
+            finalAvatar.src = `images/finalavatar.png`; // Change to your composite image generation logic
+            console.log(`Final Avatar: ${finalAvatarSrc}, Dress: ${dressSrc}, Shoes: ${shoesSrc}, Hair: ${hairSrc}`);
+            // Here, you'd typically use a server-side script or canvas to create a composite image
+            // For now, just log it to the console for demonstration purposes
+        }
+    </script>
+</body>
+</html>

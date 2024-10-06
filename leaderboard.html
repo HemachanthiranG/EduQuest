@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Session 1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(190, 159, 159);
+            background-size: cover;
+            color: rgb(22, 17, 17);
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .leaderboard {
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #0d0b0b;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+            cursor: pointer;
+        }
+
+        .trophy {
+            font-size: 24px;
+            color: gold;
+        }
+
+        .loot-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #231f1f;
+            background-color: #007bff; /* Button color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .loot-button:hover {
+            background-color: #0056b3; /* Darker button color on hover */
+        }
+
+        .loot-button.disabled {
+            background-color: #ebdcdc; /* Grey button for disabled state */
+            cursor: not-allowed;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 50px; /* Adjust the width of the avatar image */
+            height: 50px; /* Adjust the height of the avatar image */
+            border-radius: 50%; /* Make the image circular */
+            margin-right: 10px; /* Space between image and header text */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/vi.png" alt="Avatar" /> <!-- Replace with your image URL -->
+        <h1>Leaderboard - Session 1</h1>
+    </div>
+
+    <table class="leaderboard">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Sandhya S<span class="trophy">🏆</span></td>
+                <td>95</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith <span class="trophy">🏆</span></td>
+                <td>92</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Emily Johnson</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Michael Brown</td>
+                <td>85</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Emma Wilson</td>
+                <td>82</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>James Jones</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Ava Garcia</td>
+                <td>78</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Oliver Martinez</td>
+                <td>75</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Sophia Davis</td>
+                <td>72</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>William Rodriguez</td>
+                <td>70</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="loot-button" onclick="goToVRSession()" id="lootButton">Loot</button>
+
+    <script>
+        function goToVRSession() {
+            window.location.href = 'vr_session.html'; // Redirect to vr_session.html
+        }
+
+        const lootButton = document.getElementById('lootButton');
+        
+        // Disable the Loot button for everyone except the top two ranks
+      
+
+        const rows = document.querySelectorAll('.leaderboard tbody tr');
+        rows.forEach((row, index) => {
+            const nameCell = row.cells[1];
+            if (winnerNames.includes(nameCell.textContent.split(' ')[0])) {
+                // Enable loot button for the first two ranks
+                lootButton.disabled = false;
+            } else {
+                lootButton.classList.add('disabled');
+                lootButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

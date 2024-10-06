@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHacks - Term 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif; /* Set a readable font */
+            background-color: #f0f8ff; /* Light background color */
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center; /* Center header text */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 48px; /* Increase header size */
+            color: #2c3e50; /* Darker color for header */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+
+        main {
+            text-align: center; /* Center the main content */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0; /* Space between list items */
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from links */
+            background-color: #3498db; /* Button background color */
+            color: white; /* Button text color */
+            padding: 20px 30px; /* Increase button padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 24px; /* Increase link size */
+            transition: background-color 0.3s; /* Smooth transition for hover */
+            display: inline-block; /* Allow padding around text */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+        }
+
+        a:hover {
+            background-color: #2980b9; /* Darken button on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        .subject-container {
+            margin-top: 20px; /* Space above subjects */
+            display: flex; /* Use flexbox for layout */
+            flex-wrap: wrap; /* Allow wrapping to new lines */
+            justify-content: center; /* Center the subjects */
+        }
+
+        .subject {
+            margin: 20px; /* Space around each subject */
+            text-align: center; /* Center text under images */
+            width: 200px; /* Set a fixed width for each subject */
+        }
+
+        .subject img {
+            width: 100%; /* Set a width for book images */
+            height: auto; /* Maintain aspect ratio */
+            border: 2px solid #3498db; /* Border for book images */
+            border-radius: 10px; /* Rounded corners for images */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+        }
+
+        .subject h3 {
+            margin-top: 10px; /* Space between image and title */
+            font-size: 22px; /* Increase subject title size */
+            color: #34495e; /* Darker color for subject titles */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Term 1 - Subjects</h1>
+    </header>
+    
+    <main>
+        <div class="subject-container">
+            <div class="subject">
+                <a href="subject-tamil.html">Tamil</a>
+                <img src="images/tamilbook.png" alt="Tamil Book" />
+                <h3>Tamil</h3>
+            </div>
+            <div class="subject">
+                <a href="subject-english.html">English</a>
+                <img src="images/englishbook.png" alt="English Book" />
+                <h3>English</h3>
+            </div>
+            <div class="subject">
+                <a href="subject-history.html">History</a>
+                <img src="images/historybook.png" alt="History Book" />
+                <h3>History</h3>
+            </div>
+            <div class="subject">
+                <a href="subject-maths.html">Maths</a>
+                <img src="images/mathsbook.png" alt="Maths Book" />
+                <h3>Maths</h3>
+            </div>
+            <div class="subject">
+                <a href="subject-science.html">Science</a>
+                <img src="images/sciencebook.png" alt="Science Book" />
+                <h3>Science</h3>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - 2</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/ww.png'); /* History-themed background */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .question {
+            margin: 200px 0;
+            display: none; /* Initially hidden */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 800px; /* Increased size */
+            height: 100px; /* Increased height */
+            margin: 10px 0;
+            resize: none; /* Prevent resizing */
+        }
+
+        .score {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .coins {
+            font-size: 22px;
+            margin-top: 20px;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ancient Civilization</h1>
+    <h1>Test - 2</h1>
+    <h2>Non-Detail Questions</h2>
+    <button id="show-questions-btn">Show Questions</button>
+
+    <div id="questions-container">
+        <div class="question" id="question-1">
+            <h3>Question 1: Elaborate the reason for the American Revolution to begin?</h3>
+            <input type="text" id="answer-1" oninput="limitWords('answer-1', 250)" onpaste="handlePaste(event, 'answer-1')" placeholder="Type your answer..." />
+            <p>Words left: <span id="word-count-1">50</span></p>
+            <button onclick="submitAnswer(1)">Submit</button>
+            <p class="score" id="score-1"></p>
+        </div>
+        <div class="question" id="question-2">
+            <h3>Question 2: Write about the governances of the US?</h3>
+            <input type="text" id="answer-2" oninput="limitWords('answer-2', 250)" onpaste="handlePaste(event, 'answer-2')" placeholder="Type your answer..." />
+            <p>Words left: <span id="word-count-2">50</span></p>
+            <button onclick="submitAnswer(2)">Submit</button>
+            <p class="score" id="score-2"></p>
+        </div>
+        <div class="question" id="question-3">
+            <h3>Question 3: What document declared the independence of the United States and how?</h3>
+            <input type="text" id="answer-3" oninput="limitWords('answer-3', 250)" onpaste="handlePaste(event, 'answer-3')" placeholder="Type your answer..." />
+            <p>Words left: <span id="word-count-3">50</span></p>
+            <button onclick="submitAnswer(3)">Submit</button>
+            <p class="score" id="score-3"></p>
+        </div>
+    </div>
+
+    <button class="coins" id="coins-display" onclick="goToProfile()">Coins: <span id="coins-count">0</span></button>
+
+    <script>
+        const questions = [
+            { question: "What year did the American Revolution begin?", correctAnswer: "1775" },
+            { question: "Who was the first President of the United States?", correctAnswer: "George Washington" },
+            { question: "What document declared the independence of the United States?", correctAnswer: "Declaration of Independence" }
+        ];
+
+        let totalScore = 0;
+        let coins = 0; // Initialize coins to 0
+
+        document.getElementById('show-questions-btn').onclick = function() {
+            document.querySelectorAll('.question').forEach((question, index) => {
+                question.style.display = 'block'; // Show each question
+                question.querySelector('input').value = ''; // Clear any previous input
+                document.getElementById('score-' + (index + 1)).textContent = ''; // Clear previous score
+            });
+            this.style.display = 'none'; // Hide the button after showing questions
+        };
+
+        function limitWords(inputId, limit) {
+            const inputField = document.getElementById(inputId);
+            const words = inputField.value.split(/\s+/).filter(Boolean);
+            document.getElementById('word-count-' + inputId.split('-')[1]).textContent = limit - words.length; // Update words left
+            if (words.length > limit) {
+                inputField.value = words.slice(0, limit).join(' '); // Limit to specified number of words
+            }
+        }
+
+        function handlePaste(event, inputId) {
+            event.preventDefault(); // Prevent default paste behavior
+            const pastedData = (event.clipboardData || window.clipboardData).getData('text');
+            const words = pastedData.split(/\s+/).filter(Boolean);
+            limitWords(inputId, 250); // Enforce word limit after pasting
+        }
+
+        function submitAnswer(questionNumber) {
+            const userAnswer = document.getElementById('answer-' + questionNumber).value.trim();
+            const correctAnswer = questions[questionNumber - 1].correctAnswer;
+
+            // Score calculation logic
+            let score = 0;
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                score = 10; // Assume full score for correct answer
+                totalScore += score;
+                coins += 2; // Assume 2 coins for correct answer
+            }
+
+            document.getElementById('score-' + questionNumber).textContent = 'Score: ' + score + ' (Total Score: ' + totalScore + ')';
+            document.getElementById('coins-count').textContent = coins; // Update coins display
+        }
+
+        function goToProfile() {
+            // Save the coins count to localStorage before navigating
+            localStorage.setItem('userCoins', coins);
+            window.location.href = 'profile.html'; // Navigate to profile page
+        }
+
+        // Load coins from localStorage on page load
+        window.onload = function() {
+            coins = parseInt(localStorage.getItem('userCoins')) || 0; // Retrieve coins from localStorage
+            document.getElementById('coins-count').textContent = coins; // Display coins count
+        };
+    </script>
+</body>
+</html>

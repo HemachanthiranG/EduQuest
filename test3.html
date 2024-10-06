@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - 3</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .summary-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            font-size: 18px;
+            color: green;
+            margin: 10px 0;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Test - 3</h1>
+    <h2>Summary Submission</h2>
+    
+    <div class="summary-container">
+        <p>Write the summary of this session in your own words within 200 words:</p>
+        <textarea id="summary" placeholder="Type your summary here... (max 200 words)" oninput="limitWords(this, 200)"></textarea>
+        <p>Words left: <span id="word-count">200</span></p>
+
+        <input type="file" id="handwritten-upload" accept=".pdf" />
+        <p>Please upload your handwritten answers in PDF format.</p>
+        
+        <button id="handin-btn" onclick="handIn()">Hand In</button>
+        
+        <p class="message" id="credit-message">2 points credited!</p> <!-- Message for points credited -->
+    </div>
+
+    <button id="next-btn" style="display: none;" onclick="goToNextPage()">Next</button>
+
+    <script>
+        // Function to limit words in the summary textarea
+        function limitWords(textarea, limit) {
+            const words = textarea.value.split(/\s+/).filter(Boolean);
+            document.getElementById('word-count').textContent = limit - words.length; // Update words left
+            if (words.length > limit) {
+                textarea.value = words.slice(0, limit).join(' '); // Limit to specified number of words
+            }
+        }
+
+        function handIn() {
+            const summary = document.getElementById('summary').value.trim();
+            const fileInput = document.getElementById('handwritten-upload');
+            
+            // Check if the summary is filled and a file is uploaded
+            if (!summary) {
+                alert("Please provide a summary.");
+                return;
+            }
+            if (fileInput.files.length === 0) {
+                alert("Please upload your handwritten answer in PDF format.");
+                return;
+            }
+            
+            // Simulate handing in the test (you can add further processing here)
+            alert("Your summary has been submitted and your PDF has been uploaded!");
+
+            // Show points credited message
+            document.getElementById('credit-message').style.display = 'block';
+
+            // Show the next button after a short delay
+            setTimeout(function() {
+                document.getElementById('next-btn').style.display = 'block';
+            }, 2000); // 2 seconds delay
+        }
+
+        function goToNextPage() {
+            window.location.href = 'vr_session.html'; // Change to your actual next page
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Scores</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #476483; /* Primary color */
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #384f68; /* Darker shade */
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #9dc6f3; /* Border color */
+        }
+
+        th {
+            background-color: #9fb3c8; /* Header background color */
+            color: white; /* Header text color */
+        }
+
+        tr:hover {
+            background-color: #e7f3ff; /* Hover effect */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .message {
+            font-size: 18px;
+            color: green;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <h1>Student: Sandhya</h1>
+    <h2>Scores for 1st Session</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Activities</th>
+                <th>Points</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr onclick="checkScore(4, this)">
+                <td>Scores</td>
+                <td class="score">4</td>
+                
+            </tr>
+            <tr onclick="checkScore(3, this)">
+                <td>Handwriting</td>
+                <td class="score">3</td>
+                
+            </tr>
+            <tr onclick="checkScore(2, this)">
+                <td>Punctuality</td>
+                <td class="score">2</td>
+                
+            </tr>
+            <tr>
+                <td><strong>Total Score</strong></td>
+                <td id="totalScore" class="total">0</td>
+                <!-- Total possible score -->
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="message" id="challenge-message"></div>
+
+    <script>
+        // Function to check score and display message
+        function checkScore(score, row) {
+            if (score <= 3) {
+                const messageDiv = document.getElementById('challenge-message');
+                messageDiv.textContent = "Challenge Accepted!";
+                messageDiv.style.display = 'block'; // Show the message
+                row.style.backgroundColor = '#ffcccc'; // Change row color to light red
+            } else {
+                const messageDiv = document.getElementById('challenge-message');
+                messageDiv.style.display = 'none'; // Hide the message if score is above 3
+            }
+            calculateTotalScore(); // Call function to calculate total score
+        }
+
+        // Function to calculate the total score
+        function calculateTotalScore() {
+            const scores = document.querySelectorAll('.score');
+            let total = 0;
+            scores.forEach(score => {
+                total += parseInt(score.textContent); // Sum the scores
+            });
+            document.getElementById('totalScore').textContent = total; // Display the total
+        }
+
+        // Initial call to set the total score when the page loads
+        window.onload = calculateTotalScore;
+   
+    </script>
+<button onclick="window.location.href='leaderboard.html';"class="button">Leaderboard</button>
+    </body>
+    </html>

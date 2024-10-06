@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .jumbled-word {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .highlighted {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff4500; /* Bright orange */
+            background-color: #ffffe0; /* Light yellow */
+            padding: 20px;
+            display: inline-block;
+            transition: transform 0.3s; /* Animation for movement */
+            margin: 20px auto;
+        }
+
+        .highlighted:hover {
+            transform: translateY(-5px); /* Move up on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Puzzle Game</h1>
+    <p class="jumbled-word">Jumbled Word: <span id="jumbled-word"></span></p>
+    <input type="text" id="user-input" placeholder="Guess the word..." />
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="result"></p>
+    
+    <div id="completion-message" style="display: none;">
+        <span class="highlighted" id="highlighted-text">You are great! Now, are you ready to take the test?</span>
+        <br />
+        <button id="ready-button" style="display: none;">Ready</button>
+    </div>
+
+    <script>
+        // List of words (you can expand this)
+        const words = [
+            "Rome", 
+            "Gandhi", 
+            "Cleopatra", 
+            "Napoleon", 
+            "Alexander",
+            "India",
+            "Hitler"
+        ];
+
+        let currentWord = '';
+        let usedWords = [];
+
+        function shuffleWord(word) {
+            const shuffled = word.split('').sort(() => Math.random() - 0.5).join('');
+            return shuffled;
+        }
+
+        function getNewWord() {
+            if (usedWords.length === words.length) {
+                // Show completion message
+                document.getElementById('completion-message').style.display = 'block';
+                document.getElementById('ready-button').style.display = 'inline-block';
+                return;
+            }
+
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * words.length);
+            } while (usedWords.includes(words[randomIndex]));
+
+            currentWord = words[randomIndex];
+            usedWords.push(currentWord); // Add to used words
+            const jumbled = shuffleWord(currentWord);
+            document.getElementById('jumbled-word').textContent = jumbled;
+        }
+
+        function checkAnswer() {
+            const userGuess = document.getElementById('user-input').value;
+            const result = document.getElementById('result');
+            if (userGuess.toLowerCase() === currentWord.toLowerCase()) {
+                result.textContent = "Correct! The word is " + currentWord + ".";
+                getNewWord(); // Load a new word
+                document.getElementById('user-input').value = ''; // Clear input
+            } else {
+                result.textContent = "Try again!";
+            }
+        }
+
+        // Redirect to the new page when the Ready button is clicked
+        document.getElementById('ready-button').onclick = function() {
+            window.location.href = "test1.html"; // Change this to your desired page
+        };
+
+        // Load a new word when the page is opened
+        window.onload = getNewWord;
+
+        // Add event listener for the Enter key
+        document.getElementById('user-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+    </script>
+</body>
+</html>

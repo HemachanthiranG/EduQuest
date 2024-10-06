@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .coins {
+            font-size: 24px;
+            color: gold;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <img id="avatar" class="avatar" src="" alt="Avatar" />
+        <div class="info">Name: <span id="user-name"></span></div>
+        <div class="info">Email: <span id="user-email"></span></div>
+        <div class="coins">Coins: <span id="user-coins"></span></div>
+        <button onclick="goHome()">Test-3</button>
+    </div>
+
+    <script>
+        // Function to get data from localStorage
+        function loadProfileData() {
+            const userName = localStorage.getItem('userName') || 'Sandhya S';
+            const userEmail = localStorage.getItem('userEmail') || 'haha123@gmail.com';
+            const userAvatar = localStorage.getItem('userAvatar') || 'images/femaleavatar.png'; // Set a default avatar
+            const userCoins = localStorage.getItem('userCoins') || '2'; // Set a default of 0 coins
+
+            // Set the data to the elements
+            document.getElementById('user-name').textContent = userName;
+            document.getElementById('user-email').textContent = userEmail;
+            document.getElementById('user-coins').textContent = userCoins;
+            document.getElementById('avatar').src = userAvatar;
+        }
+
+        function goHome() {
+            window.location.href = 'test3.html'; // Redirect to index page
+        }
+
+        // Load profile data on page load
+        window.onload = loadProfileData;
+    </script>
+</body>
+</html>

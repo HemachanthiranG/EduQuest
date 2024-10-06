@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHacks - Gamification in Education</title>
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* Historical-themed font */
+            background-image: url('images/ancient-background.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(139, 69, 19, 0.9); /* Dark brown with transparency */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 3px solid #FFD700; /* Gold border at the bottom */
+        }
+
+        main {
+            background: rgba(255, 248, 220, 0.9); /* Parchment-style background */
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4B3E33; /* Dark brown for headings */
+        }
+
+        .chatbot-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #FFD700; /* Gold background for the button */
+            color: #4B3E33; /* Dark brown text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .chatbot-button:hover {
+            background-color: #FFC107; /* Slightly darker gold on hover */
+        }
+
+        /* Hide the chatbot by default */
+        #chatbot-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gamification in Education</h1>
+    </header>
+    
+    <main>
+        <div class="video-container">
+            <h2>Watch Videos</h2>
+            <!-- Embed the first video -->
+            <iframe src="https://www.youtube.com/embed/wX6J0Gd2EC8" allowfullscreen></iframe>
+<!-- Replace 'YOUR_VIDEO_ID' with the actual ID of the second video -->
+            <iframe src="https://www.youtube.com/embed/Kepp9g9Ccqk" allowfullscreen></iframe>
+            <!-- Add more videos as needed -->
+        </div>
+        
+        <h2>Game Now to Take the Test</h2>
+        
+        <!-- Change the button to link to the puzzle game -->
+        <a href="puzzle.html" class="chatbot-button">Puzzle</a>
+        
+        <!-- Chatbot container -->
+        <div id="chatbot-container"></div>
+    </main>
+
+    <!-- Start of ChatBot (www.chatbot.com) code -->
+    <script>
+        // Initialize OpenWidget
+        window.__ow = window.__ow || {};
+        window.__ow.organizationId = "40f0a459-8074-4fa9-9dc2-7e170fb51b27";
+        window.__ow.template_id = "ef05acd5-e446-42c7-8b20-b36409c64b9f";
+        window.__ow.integration_name = "manual_settings";
+        window.__ow.product_name = "chatbot";
+
+        (function(n,t,c){
+            function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}
+            var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},
+            once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},
+            get:function(){if(!e._h)throw new Error("[OpenWidget] You can't use getters before load.");
+            return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},
+            init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript";
+            n.src="https://cdn.openwidget.com/openwidget.js",t.head.appendChild(n)}};
+            !n.__ow.asyncInit&&e.init(),n.OpenWidget=n.OpenWidget||e
+        }(window,document,[].slice));
+
+        function OpenWidget() {
+            document.getElementById("chatbot-container").style.display = "block"; // Show the chatbot container
+            window.OpenWidget.call(); // Call the OpenWidget function to show the chatbot
+        }
+    </script>
+    <noscript>You need to <a href="https://www.chatbot.com/help/chat-widget/enable-javascript-in-your-browser/" rel="noopener nofollow">enable JavaScript</a> in order to use the AI chatbot tool powered by <a href="https://www.chatbot.com/" rel="noopener nofollow" target="_blank">ChatBot</a></noscript>
+    <!-- End of ChatBot code -->
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHacks - Lesson 1 Part 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('images/ancient-background.jpg'); /* Historical themed background */
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: rgba(139, 69, 19, 0.9); /* Dark brown with transparency */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 3px solid #FFD700; /* Gold border at the bottom */
+        }
+
+        h1 {
+            font-size: 3em;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            margin: 0;
+        }
+
+        main {
+            background: rgba(255, 248, 220, 0.9); /* Parchment-style background */
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4B3E33; /* Dark brown text */
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .option {
+            background: rgba(139, 69, 19, 0.8); /* Dark brown background for options */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 10px;
+            width: 45%; /* Two columns */
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s; /* Smooth hover effect */
+        }
+
+        .option a {
+            color: #FFD700; /* Gold links */
+            font-size: 1.8em;
+            text-decoration: none;
+        }
+
+        .option:hover {
+            background: rgba(218, 165, 32, 0.9); /* Hover effect with gold */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .option {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.3em;
+            }
+
+            .option a {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lesson 1: Part 1 - Early Civilizations</h1>
+    </header>
+    
+    <main>
+        <p>In this part, you will learn about early civilizations like Mesopotamia and the Indus Valley.</p>
+        <div class="options">
+            <div class="option">
+                <a href="live.html">Live Sessions</a>
+            </div>
+            <div class="option">
+                <a href="vedio-page.html">Watch Videos</a>
+            </div>
+            <div class="option">
+                <a href="es.pdf" download="Lesson1-Summary.pdf">Download PDF Summary</a> <!-- Direct download -->
+            </div>
+            <div class="option">
+                <a href="pdf-notes.html">PDF Notes</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

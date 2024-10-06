@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHacks - Signup</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sign Up for EduHacks</h1>
+    </header>
+    
+    <main>
+        <form action="eighth-standard.html" method="GET"> <!-- Changed action to point to standard.html -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="standard">Standard:</label>
+            <select id="standard" name="standard" required>
+                <option value="8">8th Standard</option>
+                <option value="9">9th Standard</option>
+                <!-- Add more as needed -->
+            </select>
+            
+            <button type="submit" class="button">Sign Up</button> <!-- Changed type to submit -->
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHacks - Live Sessions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #c0c7ce;
+            color: #2c3e50;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* Round profile avatar */
+        .profile-icon {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .profile-icon img {
+            border-radius: 50%; /* Ensures the avatar is round */
+            width: 50px;
+            height: 50px; /* Equal width and height */
+            cursor: pointer;
+            border: 2px solid #ecf0f1;
+        }
+
+        main {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .session-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .session-links li {
+            margin-bottom: 20px;
+            background-color: #e05606;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .session-links li:hover {
+            background-color: #e59021;
+        }
+
+        .session-info {
+            color: #ffffffdc;
+            font-size: 1.2em;
+        }
+
+        .session-info a {
+            color: #f9cc17f1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .session-info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .session-info {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Live Sessions</h1>
+        <div class="profile-icon" data-gender="male" id="profileAvatar">
+            <a href="student-profile.html">
+                <img src="images/male-avatar.png" alt="Student Profile" id="profileImg">
+            </a>
+        </div>
+    </header>
+    
+    <main>
+        <ul class="session-links">
+            <li>
+                <div class="session-info">
+                    <span>Subject: History</span><br>
+                    <span>Lesson 1: Introduction to Ancient Civilizations</span><br>
+                    <span>Part 1: Early Civilizations</span><br>
+                    <a href="https://live-session-link.com" target="_blank">Join Live Session</a>
+                </div>
+            </li>
+            <li>
+                <div class="session-info">
+                    <span>Subject: History</span><br>
+                    <span>Lesson 1: Introduction to Ancient Civilizations</span><br>
+                    <span>Part 2: Ancient Empires</span><br>
+                    <a href="https://live-session-link.com" target="_blank">Join Live Session</a>
+                </div>
+            </li>
+            <!-- Add more session links here -->
+        </ul>
+    </main>
+
+    <script>
+        // Optional: Dynamic avatar selection based on gender
+        document.addEventListener("DOMContentLoaded", function () {
+            const profileAvatar = document.getElementById('profileAvatar');
+            const profileImg = document.getElementById('profileImg');
+            
+            // Assuming gender is stored in data-gender attribute
+            const gender = profileAvatar.getAttribute('data-gender');
+
+            if (gender === 'female') {
+                profileImg.src = 'images/female-avatar.png'; // Use female avatar image
+            } else {
+                profileImg.src = 'images/male-avatar.png'; // Default to male avatar image
+            }
+        });
+    </script>
+</body>
+</html>
